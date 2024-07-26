@@ -9,45 +9,82 @@ const feels = document.getElementById('feels-like');
 const city_name = document.getElementById('city-name');
 const location_not_found = document.querySelector('.location-not-found');
 const weather_body = document.querySelector('.weather-body');
+const container = document.querySelector('.container');
+// const url = 'https://yahoo-weather5.p.rapidapi.com/weather?location=qatar&format=json&u=f';
+// const options = {
+// 	method: 'GET',
+// 	headers: {
+// 		'x-rapidapi-key': '1c93f6cd65mshab63d49437afad3p1ff74ejsn8c39985b2280',
+// 		'x-rapidapi-host': 'yahoo-weather5.p.rapidapi.com'
+// 	}
+// };
+// async function checkWeather(){
+//     const weather_data =await fetch(url,options).then(response => response.json());
+//      console.log(weather_data);
+// }
 
+// checkWeather();
+ async function checkWeather(city){
+    const url = `https://yahoo-weather5.p.rapidapi.com/weather?location=${city}&format=json&u=f`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': '1c93f6cd65mshab63d49437afad3p1ff74ejsn8c39985b2280',
+            'x-rapidapi-host': 'yahoo-weather5.p.rapidapi.com'
+        }
+    };
+   const weather_data =await fetch(url,options).then(response => response.json());
 
-
-
-
-async function checkWeather(city){
-    const api_key = "4edce5e6683cbf6fda21c240129f1bf7";
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
-
-    const weather_data =await fetch(`${url}`).then(response => response.json());
-    if(weather_data.cod === `400` || weather_data.cod === `404`){
+   if(weather_data.message === `Internal Server Error`){
         location_not_found.style.display = "flex";
         weather_body.style.display = "none";
         return;
     }
      weather_body.style.display = "flex";
      location_not_found.style.display = "none";
-     temp1.innerHTML = `${Math.round(weather_data.main.temp - 273.15)}°C`
-     desc1.innerHTML = `${weather_data.weather[0].description}`;
-     humidity1.innerHTML =`${weather_data.main.humidity}%`
-     wind_speed.innerHTML = `${weather_data.wind.speed}Km/H`
-    feels.innerHTML = `${Math.round(weather_data.main.feels_like - 273.15)}°C`
-    city_name.innerHTML = `${weather_data.name}`
+     temp1.innerHTML = `${Math.round((weather_data.current_observation.condition.temperature - 32)*5/9)}°C`
+     desc1.innerHTML = `${weather_data.current_observation.condition.text}`;
+     humidity1.innerHTML =`${weather_data.current_observation.atmosphere.humidity}%`
+     wind_speed.innerHTML = `${weather_data.current_observation.wind.speed}Km/H`
+    feels.innerHTML = `${Math.round((weather_data.current_observation.wind.chill - 32)*5/9)}°C`
+    city_name.innerHTML = `${weather_data.location.city}`
 
-    switch(weather_data.weather[0].main){
-        case 'Clouds':
+    switch(weather_data.current_observation.condition.text){
+        case 'Thunderstorms':
+            weather_img.src = "/assets/thuderstorm.png";
+            container.className = "container5";
+            break;
+        case 'Cloudy':
             weather_img.src = "/assets/cloudy.png";
+            container.className = "container2";
+            break;
+        case 'Rain':
+            weather_img.src = "/assets/rain.png";
+            container.className = "container6";
+            break;
+        case 'Showers':
+            weather_img.src = "/assets/shower.png";
+            container.className = "container6";
+            break;
+        case 'Sunny':
+            weather_img.src = "/assets/sunny.png";
+            container.className = "container7";
+            break;
+        case 'Haze':
+            weather_img.src = "/assets/haze.png";
+            container.className = "container4";
+            break;
+        case 'Partly Cloudy':
+            weather_img.src = "/assets/mostly-cloudy.png";
+            container.className = "container3";
+            break;
+        case 'Mostly Cloudy':
+            weather_img.src = "/assets/mostly-cloudy.png";
+            container.className = "container3";
             break;
         case 'Clear':
             weather_img.src = "/assets/sunny.png";
-            break;
-        case 'Rain':
-            weather_img.src = "/assets/rainy.png";
-            break;
-        case 'Mist':
-            weather_img.src = "/assets/foggy.png";
-            break;
-        case 'Snow':
-            weather_img.src = "/assets/snowy.png";
+            container.className = "container7";
             break;
     }
 }

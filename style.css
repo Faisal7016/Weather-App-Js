@@ -11,15 +11,80 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: whitesmoke;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .container{
     width: 400px;
     height: min-content;
-    background-color: white;
+    background: linear-gradient(50deg, skyblue, yellow);
     border-radius: 12px;
     padding: 28px;
 }
+.container2{
+    width: 400px;
+    height: min-content;
+    background: linear-gradient(50deg, skyblue, yellow);
+    border-radius: 12px;
+    padding: 28px;
+    background-image: url(assets/gif/cloudy.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+.container3{
+    width: 400px;
+    height: min-content;
+    background: linear-gradient(50deg, skyblue, yellow);
+    border-radius: 12px;
+    padding: 28px;
+    background-image: url(assets/gif/cloudy-gif.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+.container4{
+    width: 400px;
+    height: min-content;
+    background: linear-gradient(50deg, skyblue, yellow);
+    border-radius: 12px;
+    padding: 28px;
+    background-image: url(assets/gif/haze.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+.container5{
+    width: 400px;
+    height: min-content;
+    background: linear-gradient(50deg, skyblue, yellow);
+    border-radius: 12px;
+    padding: 28px;
+    background-image: url(assets/gif/storm.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container6{
+    width: 400px;
+    height: min-content;
+    background: linear-gradient(50deg, skyblue, yellow);
+    border-radius: 12px;
+    padding: 28px;
+    background-image: url(assets/gif/rainy-day.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container7{
+    width: 400px;
+    height: min-content;
+    background: linear-gradient(50deg, skyblue, yellow);
+    border-radius: 12px;
+    padding: 28px;
+    background-image: url(assets/gif/sunny-day.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .search-box{
     width: 100%;
     height: min-content;
