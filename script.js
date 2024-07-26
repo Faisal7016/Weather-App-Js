@@ -92,4 +92,3 @@ const container = document.querySelector('.container');
 searchBtn.addEventListener('click', ()=>{
     checkWeather(inputbox.value);
 });
-console.log(weather_data.current_observation.condition);
