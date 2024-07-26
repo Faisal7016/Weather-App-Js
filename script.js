@@ -29,7 +29,7 @@ const container = document.querySelector('.container');
     const options = {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': '1c93f6cd65mshab63d49437afad3p1ff74ejsn8c39985b2280',
+            'x-rapidapi-key': 'd7af6bf00cmsh79a3328e27a5c76p106aa4jsn5dda1f1311b9',
             'x-rapidapi-host': 'yahoo-weather5.p.rapidapi.com'
         }
     };
@@ -92,3 +92,4 @@ const container = document.querySelector('.container');
 searchBtn.addEventListener('click', ()=>{
     checkWeather(inputbox.value);
 });
+console.log(weather_data.current_observation.condition);

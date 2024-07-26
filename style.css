@@ -73,6 +73,7 @@ body{
     background-image: url(assets/gif/rainy-day.gif);
     background-repeat: no-repeat;
     background-size: cover;
+    color: white;
 }
 .container7{
     width: 400px;
